@@ -36,6 +36,12 @@ Moreover to prevent spamming, feature can be added where community of PeepIn use
 -Metamask
 -Alchemy
 
+## Screenshots
+<img width="1429" alt="Screenshot 2023-07-25 at 11 48 36 PM" src="https://github.com/harry91198/peep-in/assets/35892549/a105604d-a2dd-4478-bc8a-e163d95502e0">
+<img width="1406" alt="Screenshot 2023-07-25 at 11 48 23 PM" src="https://github.com/harry91198/peep-in/assets/35892549/ae36c175-0e3d-46c2-be22-b8490f259df2">
+<img width="1400" alt="Screenshot 2023-07-25 at 11 48 52 PM" src="https://github.com/harry91198/peep-in/assets/35892549/101bbb73-7ed2-42fd-b2b1-069989c737d9">
+
+
 ## Installation
 ### webapp
 1. Clone the repo
