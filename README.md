@@ -1,4 +1,5 @@
-# PeepIn
+# PeepIn <img width="203" alt="Screenshot 2023-07-26 at 12 28 41 AM" src="https://github.com/harry91198/peep-in/assets/35892549/0972b8a8-d249-4bb0-977b-b4ed6f1cb02a">
+
 Decentralized app to put/get reviews and ratings for the companies
 
 ## Links
@@ -37,8 +38,13 @@ Moreover to prevent spamming, feature can be added where community of PeepIn use
 -Alchemy
 
 ## Screenshots
+- List of companies with search options
 <img width="1429" alt="Screenshot 2023-07-25 at 11 48 36 PM" src="https://github.com/harry91198/peep-in/assets/35892549/a105604d-a2dd-4478-bc8a-e163d95502e0">
+
+- Page displaying Compnay info for twitter & a review submitted by some address
 <img width="1406" alt="Screenshot 2023-07-25 at 11 48 23 PM" src="https://github.com/harry91198/peep-in/assets/35892549/ae36c175-0e3d-46c2-be22-b8490f259df2">
+
+- Page displaying Compnay info for google & reviews submitted by two addresses
 <img width="1400" alt="Screenshot 2023-07-25 at 11 48 52 PM" src="https://github.com/harry91198/peep-in/assets/35892549/101bbb73-7ed2-42fd-b2b1-069989c737d9">
 
 
