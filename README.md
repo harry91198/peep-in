@@ -5,7 +5,7 @@ Decentralized app to put/get reviews and ratings for the companies
 - [Demo Video](https://youtu.be/4Q4QX6Q4Q4Q)
 - [Live Demo](https://peepin.xyz/)
 - [Live Demo](https://peep-in-nine.vercel.app/)
-- [Smart Contracts on Polygon Mumbai Testnet](https://mumbai.polygonscan.com/address/0xb8885e78ae52804f3fcbb0f0061efa35580f05dc
+- [Smart Contracts on Polygon Mumbai Testnet](https://mumbai.polygonscan.com/address/0xb8885e78ae52804f3fcbb0f0061efa35580f05dc)
 
 ## Overview
 PeepIn is a blockchain based platform where professionals can share their authentic experiences and reviews about the companies they work(ed) for. It is a decentralized app built on Polygon(Mumbai) chain using Solidity smart contracts and NextJs. 
@@ -15,12 +15,12 @@ Centralized review platforms are not transparent and are prone to removal of neg
 Moreover to prevent spamming, feature can be added where community of PeepIn users can decide the authenticity of the reviews by reacting on them based on `Trueness`, `Possible lie` & `Report abuse` anonymously. The reviews with the most positive reactions will be shown on the top.
 
 ## Features
--Anonymity: Users can post reviews anonymously. Share your thoughts anonymously without any fear of repercussions.
--Ratings: Users can rate the companies on a scale of 1-5, based on various aspects like work-life balance, salary, management, etc.
--Gasless: Users can post reviews without paying any gas fees.
--Of/For/By the community: The community can decide the authenticity of the reviews by reacting on them. The reviews with the most positive reactions will be shown on the top.
--Transparency: All the reviews and ratings are stored on the blockchain, which makes them immutable and transparent.
--Helpful Feedback: Users can add reviews with pros & cons along with advice. So, Constructive feedback helps companies to improve their work culture and policies.
+- Anonymity: Users can post reviews anonymously. Share your thoughts anonymously without any fear of repercussions.
+- Ratings: Users can rate the companies on a scale of 1-5, based on various aspects like work-life balance, salary, management, etc.
+- Gasless: Users can post reviews without paying any gas fees.
+- Of/For/By the community: The community can decide the authenticity of the reviews by reacting on them. The reviews with the most positive reactions will be shown on the top.
+- Transparency: All the reviews and ratings are stored on the blockchain, which makes them immutable and transparent.
+- Helpful Feedback: Users can add reviews with pros & cons along with advice. So, Constructive feedback helps companies to improve their work culture and policies.
 
 ## Tech Stack
 -NextJs
