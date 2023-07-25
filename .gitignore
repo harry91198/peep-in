@@ -1,0 +1,10 @@
+.next/
+node_modules
+package-lock.json
+.DS_Store
+.env
+contract-module/node_modules
+contract-module/.env
+contract-module/package-lock.json
+contract-module/cache
+```
