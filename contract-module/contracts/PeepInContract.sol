@@ -14,9 +14,9 @@ contract PeepInContract is Initializable, UUPSUpgradeable, OwnableUpgradeable, E
     event NewEntry(uint256 indexed tokenId, address indexed to, string uri);
     event ReviewSubmitted(uint256 indexed tokenId, address indexed reviewer, uint256 rating, uint256 timestamp, string reviewLink);
 
-    mapping(uint256 => address) public ownerOf;
-    mapping(uint256 => string) public companyMetadata;
-    uint256 public totalCom;
+    mapping(uint256 => address) public ownerOf; // mapping for storing owner of the company (tokenId => owner)
+    mapping(uint256 => string) public companyMetadata; // mapping for storing company metadata (tokenId => metadata)
+    uint256 public totalCom; // total number of companies registered on the platform
 
     // structure that will store rating, timestamp & reviewLink
     struct ReviewData {
@@ -24,6 +24,7 @@ contract PeepInContract is Initializable, UUPSUpgradeable, OwnableUpgradeable, E
         uint128 timestamp;
         string reviewLink;
     }
+    // structure that will store totalRating & totalCount
     struct RatingData {
         uint128 totalRating;
         uint128 totalCount;
@@ -31,10 +32,10 @@ contract PeepInContract is Initializable, UUPSUpgradeable, OwnableUpgradeable, E
 
     // mapping for storing reviews structure for tokenId and reviewAddress
     mapping(uint256 => mapping(address => ReviewData)) private Review; 
-
+    // mapping for storing ratingData structure for tokenId
     mapping(uint256 => RatingData) public ratingsData;
-    uint256 constant public RATING_PRECISION = 1000000;
-    mapping(address => uint256) public ownerIs;
+    uint256 constant public RATING_PRECISION = 1000000; // 10^6 decimal places added for precision
+    mapping(address => uint256) public ownerIs; // mapping for storing tokenId of the owner (owner => tokenId)
     /// @custom:oz-upgrades-unsafe-allow constructor    
     constructor() {
         _disableInitializers();
@@ -44,12 +45,18 @@ contract PeepInContract is Initializable, UUPSUpgradeable, OwnableUpgradeable, E
         __Ownable_init();
 
         __UUPSUpgradeable_init();
-        _setTrustedForwarder(trustedForwarder_);
+        _setTrustedForwarder(trustedForwarder_); // set trustedForwarder for Biconomy gasless transactions support
 
         _tokenIdCounter.increment();//because we want it to start company list index from 1 & not 0
 
     }
 
+    /**
+     * @notice register a company on the platform
+     * @dev onlyOwner can call this function
+     * @param to address to which company will be registered
+     * @param uri string URI where company metadata stored
+     */
     function addCompany(address to, string memory uri) external onlyOwner {
         require(ownerIs[to] == 0, "Address is already owner of a company");
         uint256 tokenId = _tokenIdCounter.current();
@@ -61,6 +68,12 @@ contract PeepInContract is Initializable, UUPSUpgradeable, OwnableUpgradeable, E
         emit NewEntry(tokenId, to, uri);
     }
 
+    /**
+     * @notice edit details of a company stored on the platform
+     * @dev owner of the company(tokenId) can call this function
+     * @param tokenId uint256 token ID to edit the details for
+     * @param uri string new URI where company metadata stored
+     */
     function editCompany(uint256 tokenId, string memory uri) external {
         require(ownerOf[tokenId] == _msgSender(), "Caller is not the owner");
         companyMetadata[tokenId] = uri;
@@ -72,7 +85,7 @@ contract PeepInContract is Initializable, UUPSUpgradeable, OwnableUpgradeable, E
      * @dev checks rating range emits ReviewSubmitted event after updating average rating
      * @param tokenId uint256 token ID to submit the rating/reviews for
      * @param rating uint128 ranging between 1 & 5
-     * @param reviewLink string URI where reviews stored
+     * @param reviewLink string URI where reviews get stored
      */
     function submitReview(uint256 tokenId, uint128 rating, string memory reviewLink) public {
         require(rating >= 1 && rating <= 5, "Invalid rating"); // Assuming rating ranges from 1 to 5
@@ -107,6 +120,8 @@ contract PeepInContract is Initializable, UUPSUpgradeable, OwnableUpgradeable, E
         return (review.rating, review.timestamp, review.reviewLink);
     }
 
+    // function called internally to update average rating for a given tokenId 
+    // after a new rating is submitted or edited by a reviewer
     function updateAverageRating(uint256 tokenId, uint128 oldRating, uint128 newRating) internal {
         if(oldRating == 0){
             // first time rating
