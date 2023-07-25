@@ -1,9 +1,9 @@
-# PeepIn <img width="203" alt="Screenshot 2023-07-26 at 12 28 41 AM" src="https://github.com/harry91198/peep-in/assets/35892549/0972b8a8-d249-4bb0-977b-b4ed6f1cb02a">
+# <img width="203" alt="Screenshot 2023-07-26 at 12 28 41 AM" src="https://github.com/harry91198/peep-in/assets/35892549/0972b8a8-d249-4bb0-977b-b4ed6f1cb02a"> PeepIn
 
 Decentralized app to put/get reviews and ratings for the companies
 
 ## Links
-- [Demo Video](https://youtu.be/4Q4QX6Q4Q4Q)
+- [Demo Video](https://youtu.be/INEi-1Zjoac)
 - [Live Demo](https://peepin.xyz/)
 - [Live Demo](https://peep-in-nine.vercel.app/)
 - [Smart Contracts on Polygon Mumbai Testnet](https://mumbai.polygonscan.com/address/0xb8885e78ae52804f3fcbb0f0061efa35580f05dc)
