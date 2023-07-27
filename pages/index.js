@@ -1,13 +1,16 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Box, Center, Heading, Highlight, Input, InputGroup, InputLeftElement, InputRightAddon, InputRightElement, SimpleGrid, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Box, Center, Button, Heading, Highlight, Input, InputGroup, InputLeftElement, InputRightAddon, InputRightElement, SimpleGrid, Spinner, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import FloatingButton from "../components/FloatingButton";
 import { SearchIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from "react";
-import useCompanyData from "../lib/hooks/useCompanyData";
+import { use, useEffect, useState } from "react";
 import TableList from "../components/TableList";
+import { readContract, readContracts } from '@wagmi/core';
+
+import config from '../contract-module/scripts/config.json';
+import contract from '../contract-module/artifacts/contracts/PeepInContract.sol/PeepInContract.json';
 
 
 // TODO: add ESG score also
@@ -17,22 +20,49 @@ export default function Home(props) {
   const [onFocus, setOnFocus] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [companyMetadata, setCompanyMetadata] = useState([]);
-  const companyData = useCompanyData();
+  const [gettingData, setGettingData] = useState(false);
+
   useEffect(() => {
     async function getCompanyData(){
-      if(companyData.allData){
+      const totalCom = await readContract({
+        address: config.peepIn,
+        abi: contract.abi,
+        functionName: 'totalCom',
+      })
+      console.log("totalCom", totalCom);
+      if(totalCom){
+        setGettingData(true);
         let temp = [];
-      for(let i=0;i<companyData.allData.length;i++){
-        const metadataLink = companyData.allData[i].metadata;
-        const metadata = await fetch(metadataLink);
-        const metadataJson = await metadata.json();
-        const thisCompanyData = {...metadataJson, avgRating: companyData.allData[i].avgRating, id: companyData.allData[i].id};
-        temp.push(thisCompanyData);
+        for(let i=1; i <= totalCom; i++){
+          const comData = await readContracts({
+            contracts: [
+              {
+                address: config.peepIn,
+                abi: contract.abi,
+                functionName: 'companyMetadata',
+                args: [i]
+              },
+              {
+                address: config.peepIn,
+                abi: contract.abi,
+                functionName: 'getAverageRating',
+                args: [i]
+              }
+            ]
+          })
+          console.log("comData", i, comData);
+          const metadataLink = comData[0].result;
+          const metadata = await fetch(metadataLink);
+          const metadataJson = await metadata.json();
+          const thisCompanyData = {...metadataJson, avgRating: comData[1].result, id: i};
+          temp.push(thisCompanyData);
+          
+        }
+        setCompanyMetadata(temp);
+        setGettingData(false);
       }
-      setCompanyMetadata(temp);
-    }    
-  }
-  getCompanyData();
+    }
+    if(onFocus) getCompanyData();
   }, [onFocus]);
 
   const searchBarVariants = {
@@ -111,6 +141,21 @@ export default function Home(props) {
         <SmallCloseIcon color='gray.300' cursor={'pointer'} onClick={()=>setOnFocus(false)} />
         </InputRightElement>
       </InputGroup>
+      {
+        gettingData?
+
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+      
+            position={'fixed'}
+            mx="93%"
+            my="-6%"
+            color="yellow.400"
+            size="md"
+          />
+   
+        : null}
 
       {
         onFocus?null:

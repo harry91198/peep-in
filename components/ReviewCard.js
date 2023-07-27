@@ -75,81 +75,76 @@ const ReviewCard = ({reviewData}) => {
 
 return (
     <>
-    {
-      reviewData.map((review, index) => {
-        console.log("reviewww", review);
-        return (
-          <Box
-              maxW="md"
-              borderWidth="1px"
-              borderRadius="lg"
-              overflow="hidden"
-              boxShadow="lg"
-              p="6"
-              m="10"
-              >
-              <Flex key={index-"flex1"}>
-              {
-                
-                  //print StarIcon for each rating out of 5, for the rest of the stars print empty StarIcon
-                  [...Array(Number(review.rating))].map((e, i) => <StarIcon key={i} color={"yellow.400"} />).concat(
-                  [...Array(5 - Number(review.rating))].map((e, i) => <StarIcon key={i} color={"gray.400"} />)
-                  )
-              }
-              </Flex>
-              <Text fontSize="xs">By {review.employee} employee, {getTimeAgo(Number(review.timestamp)*1000)}</Text>
-              <Flex key={index-"flex2"}>
-                  <Box>
-                      <Heading fontSize="xl">"{review.review}"</Heading>
-                      <Text fontSize="sm" ml={10}>
-                        <Link href={`https://mumbai.polygonscan.com/address/${review.reviewer}`} isExternal>
-                        -{review.title}
-                        <Avatar size="xs" mt={0} mb={2} src={`https://api.dicebear.com/6.x/pixel-art/svg?seed=${review.reviewer}`} />
-                        </Link>
-                      </Text>
-                  </Box>
-                  <Spacer />
-                  <Box>
-                    <Link href={`https://mumbai.polygonscan.com/tx/${review.transactionHash}`} isExternal>
-                      <ExternalLinkIcon />
-                    </Link>
-                  </Box>
-              </Flex>
-              <Divider />
-              <Flex key={index-"flex3"}>
-                  <Box key={index-"1"} m={2}>
-                      <Heading key={index-"pros"} fontSize="xl">Pros: </Heading>
-                      <Text fontSize="xs">{review.pros}</Text>
-
-                      <Heading key={index-"cons"} fontSize="xl" mt={1}>Cons: </Heading>
-                      <Text fontSize="xs">{review.cons}</Text>
-                  </Box>
-                  <Spacer />
-                  <Box key={index-"2"} m={2}>
-                      <Heading fontSize="xl">Advices</Heading>
-                      <Text fontSize="xs">{review.advices}</Text>
-                      <Text fontSize="xs" mt={2}>
-                        <Tooltip label="True hai" aria-label="A tooltip" placement='top'>
-                        <Button variant={'unstyled'} // onClick={}
-                        >💯</Button>
-                        </Tooltip>
-                        <Tooltip label="Lie" aria-label="A tooltip" placement='top'>
-                        <Button variant={'unstyled'} // onClick={}
-                        >🤥</Button>
-                        </Tooltip>
-                        <Tooltip label="Report abuse" aria-label="A tooltip" placement='top'>
-                        <Button variant={'unstyled'} // onClick={}
-                        >😈</Button>
-                        </Tooltip>                                        
-                      </Text>
-                  </Box>
-              </Flex>
-          </Box>
-        )
+    <Box
+        maxW="lg"
+        borderWidth="1px"
+        borderRadius="lg"
+        overflow="hidden"
+        boxShadow="lg"
+        p="6"
+        m="10"
+        >
+        <Flex>
+        {
           
-      })
+            //print StarIcon for each rating out of 5, for the rest of the stars print empty StarIcon
+            [...Array(Number(reviewData.rating))].map((e, i) => <StarIcon key={i+'2'} color={"yellow.400"} />).concat(
+            [...Array(5 - Number(reviewData.rating))].map((e, i) => <StarIcon key={i+'3'} color={"gray.400"} />)
+            )
+        }
+        </Flex>
+        <Text fontSize="xs">By {reviewData.employee} employee, {getTimeAgo(Number(reviewData.timestamp)*1000)}</Text>
+        <Flex>
+            <Box
+                
+            >
+                <Heading fontSize="xl">"{reviewData.review}"</Heading>
+                <Text fontSize="sm" ml={10}>
+                  <Link href={`https://mumbai.polygonscan.com/address/${reviewData.reviewer}`} isExternal>
+                  -{reviewData.title}
+                  <Avatar size="xs" mt={0} mb={2} ml={1} src={`https://api.dicebear.com/6.x/pixel-art/svg?seed=${reviewData.reviewer}`} />
+                  </Link>
+                </Text>
+            </Box>
+            <Spacer />
+            <Box
+            >
+              <Link href={`https://mumbai.polygonscan.com/tx/${reviewData.transactionHash}`} isExternal>
+                <ExternalLinkIcon />
+              </Link>
+            </Box>
+        </Flex>
+        <Divider />
+        <Flex>
+            <Box m={2}>
+                <Heading fontSize="xl">Pros: </Heading>
+                <Text fontSize="xs">{reviewData.pros}</Text>
 
-    }
+                <Heading fontSize="xl" mt={1}>Cons: </Heading>
+                <Text fontSize="xs">{reviewData.cons}</Text>
+            </Box>
+            <Spacer />
+            <Box m={2}>
+                <Heading fontSize="xl">Advices</Heading>
+                <Text fontSize="xs">{reviewData.advices}</Text>
+                <Text fontSize="xs" mt={2}>
+                  <Tooltip label="True hai" aria-label="A tooltip" placement='top'>
+                  <Button variant={'unstyled'} // onClick={}
+                  >💯</Button>
+                  </Tooltip>
+                  <Tooltip label="Lie" aria-label="A tooltip" placement='top'>
+                  <Button variant={'unstyled'} // onClick={}
+                  >🤥</Button>
+                  </Tooltip>
+                  <Tooltip label="Report abuse" aria-label="A tooltip" placement='top'>
+                  <Button variant={'unstyled'} // onClick={}
+                  >😈</Button>
+                  </Tooltip>                                        
+                </Text>
+            </Box>
+        </Flex>
+    </Box>
+
 
 
 

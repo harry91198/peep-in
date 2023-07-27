@@ -49,9 +49,11 @@ const TableList = ({data, searchTerm}) => {
       });
 
     return (
-        <TableContainer>
+        <TableContainer p={3}>
         <Table variant='striped' colorScheme='yellow'>
-            {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
+            <TableCaption>
+            Click on a company to see more details. Can't find your company? <Link href="/register" textDecorationLine={'underline'}>Add it here!</Link>
+            </TableCaption>
             <Thead>
             <Tr>
                 <Th></Th>
@@ -64,7 +66,16 @@ const TableList = ({data, searchTerm}) => {
                 {
                     sortedData.map((item, index) => {
                         return (
-                            <Tr key={index} onClick={()=>router.push({
+                            <Tr 
+                            _hover={{
+                                    backgroundColor: useColorModeValue("blackAlpha.100", "whiteAlpha.100"),
+                                    transform: "scale(1.01)",
+                                    boxShadow: "0 0 1rem 0 rgba(0, 0, 0, .2)",
+                                    // fontWeight: "bold",
+                                }}
+                                cursor={"pointer"}
+                            transition={"all 1s ease-in-out"}
+                            key={index} onClick={()=>router.push({
                                 pathname: `/company/${item.id}`,
                               }, undefined, { shallow: true }
                             )}>
@@ -85,6 +96,7 @@ const TableList = ({data, searchTerm}) => {
                                     />
                                 </Td>
                             </Tr>
+
                         )
                     }
                     )

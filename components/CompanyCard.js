@@ -278,6 +278,7 @@ const CompanyCard = ({companyData, userReview, hasReviewed, setRefresh}) => {
                 isClosable: true,
                 })
                 setRefresh(true);
+                reset();
             }
             onClose();
         if (txError) {
@@ -421,6 +422,8 @@ const CompanyCard = ({companyData, userReview, hasReviewed, setRefresh}) => {
                   position:"top"
                   })
                   onClose();
+                  setRefresh(true);
+                  reset();
               });
               
               biconomy.on("onError", (data) => {
@@ -441,6 +444,16 @@ const CompanyCard = ({companyData, userReview, hasReviewed, setRefresh}) => {
               // })
         }
         setUploadingReview(false);
+      };
+
+      const reset = () => {
+        setRatingValue(0);
+        setEmployeeValue("");
+        setTitleValue("");
+        setReviewValue("");
+        setProsValue("");
+        setConsValue("");
+        setAdvicesValue("");
       };
 
 return (
@@ -476,7 +489,7 @@ return (
                     fullSymbol={<StarIcon color={"yellow.400"} />}
                     onHover={()=>{}}
                      />
-                    ({ Number(companyData.avgRating)/RATING_PRECISION })
+                    ({(Number(companyData.avgRating)/RATING_PRECISION).toFixed(2) })
                 </Heading>
             </Grid>
 

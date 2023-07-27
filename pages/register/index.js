@@ -28,7 +28,8 @@ import { FileUploader } from "react-drag-drop-files";
 const fileTypes = ["JPG", "JPEG", "PNG"];
 
 import { useAccount, useContractWrite, useWaitForTransaction, useContractRead } from 'wagmi'
-import useOwner from "../../lib/hooks/useOwner";
+import { readContract, readContracts } from '@wagmi/core';
+
 
 // TODO: add ESG score also
 
@@ -66,9 +67,21 @@ export default function Register() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { handleSubmit, register, reset } = useForm();
   const [submittingForm, setSubmittingForm] = useState(false);
+  const [owner, setOwner] = useState(null);
   const toast = useToast();
 
-  const info = useOwner();
+  useEffect(() => {
+    async function getOwner() {
+    const owner = await readContract({
+      address: config.peepIn,
+      abi: contract.abi,
+      functionName: 'owner',
+    })
+    console.log("owner", owner);
+    setOwner(owner);
+    }
+    getOwner();
+  }, []);
 
   const { data, isLoading, error, isError, isSuccess, write } = useContractWrite({
     address: config.peepIn,
@@ -186,8 +199,8 @@ const onSubmit = async(data) => {
     console.log("ipfsURI", ipfsURI);
     setDataIPFS(ipfsURI);
     setDataUpload(false);
-    
-    if (info.data == address){
+
+    if (owner == address){
         toast({
           title: 'Details uploaded on IPFS Successfully',
           description: 'Sign the transaction to add your company to the PeepIn',

@@ -2,17 +2,20 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Head from "next/head";
 import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
-import { Box, Center, Heading, Highlight, Input, InputGroup, InputLeftElement, InputRightAddon, InputRightElement, SimpleGrid, Spinner, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Box, Center, Button, Heading, Highlight, Input, InputGroup, InputLeftElement, InputRightAddon, InputRightElement, SimpleGrid, Spinner, Text, useColorMode, useColorModeValue, Skeleton, SkeletonCircle, SkeletonText, Grid, GridItem } from "@chakra-ui/react";
 import FloatingButton from "../../components/FloatingButton";
-import useGetCompany from "../../lib/hooks/useGetCompany";
 import CompanyCard from "../../components/CompanyCard";
-// import useGetReviews from "../../lib/hooks/useGetReviews";
 
-import config from '../../contract-module/scripts/config.json';
 import { createPublicClient, fallback, http, stringify } from 'viem'
 import { polygonMumbai } from 'viem/chains';
 import ReviewCard from "../../components/ReviewCard";
 import { useAccount } from "wagmi";
+import { readContract, readContracts } from '@wagmi/core';
+
+
+import config from '../../contract-module/scripts/config.json';
+import contract from '../../contract-module/artifacts/contracts/PeepInContract.sol/PeepInContract.json';
+
 
 
 // TODO: add ESG score also
@@ -27,26 +30,41 @@ export default function Company() {
   const [userReview, setUserReview] = useState();
   const [refresh, setRefresh] = useState(false);
   const [updatingReview, setUpdatingReview] = useState(false);
+  const [gettingData, setGettingData] = useState(false);
 
-
-const comData = useGetCompany(router.query.id); 
-// const reviewData = useGetReviews(router.query.id);
 
   useEffect(() => {
-    async function getCompanyData(){
-      if(comData.allData.id != ""){
-        const metadataLink = comData.allData.metadata;
-        const metadata = await fetch(metadataLink);
-        const metadataJson = await metadata.json();
-        const thisCompanyData = {...metadataJson, avgRating: comData.allData.avgRating, id: comData.allData.id};
-        // console.log("thisCompanyData", thisCompanyData);
-      setCompanyMetadata(thisCompanyData);
+    async function getCompanyData(i){
+      if(i){
+        setGettingData(true);
+          const comData = await readContracts({
+            contracts: [
+              {
+                address: config.peepIn,
+                abi: contract.abi,
+                functionName: 'companyMetadata',
+                args: [i]
+              },
+              {
+                address: config.peepIn,
+                abi: contract.abi,
+                functionName: 'getAverageRating',
+                args: [i]
+              }
+            ]
+          })
+          console.log("comData", i, comData);
+          const metadataLink = comData[0].result;
+          const metadata = await fetch(metadataLink);
+          const metadataJson = await metadata.json();
+          const thisCompanyData = {...metadataJson, avgRating: comData[1].result, id: i};
+          
+        setCompanyMetadata(thisCompanyData);
+        setGettingData(false);
+      }
     }
-    // console.log("companyMetadata", companyMetadata);
-    
-  }
-  getCompanyData();
-  }, [router]);
+    getCompanyData(router.query.id);
+  }, [router, refresh]);
 
   useEffect(() => {
     async function getReviewData(){
@@ -147,29 +165,84 @@ const comData = useGetCompany(router.query.id);
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <div>
+        <div>
+          <Button
+            onClick={() => {
+              router.push("/");
+            }}
+            mx={"10"}
+            my={"1rem"}
+            mb={"-2rem"}
+          >
+            Back
+          </Button>
+        </div>
+
         {
             companyMetadata?
 
-
-                <CompanyCard companyData={companyMetadata} userReview={userReview} hasReviewed={hasReviewed} setRefresh={setRefresh}/>
+<>
+<CompanyCard companyData={companyMetadata} userReview={userReview} hasReviewed={hasReviewed} setRefresh={setRefresh}/>
+</>
 
             
+            :
+            // <Heading as="h1" size="2xl" m={"2rem"} align={"center"}>
+            //     <Spinner />
+            // </Heading>
+            <Box
+             boxShadow='lg'    
+             m={10}
+             mt={"4em"}
+             height={"250px"}
+              >
+                <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+                    <GridItem colSpan={1}>
+
+                <Skeleton height={"100%"} />
+                </GridItem>
+                <GridItem colSpan={1}>
+                <SkeletonText  noOfLines={4} spacing="4" p={2} skeletonHeight={10} />
+                </GridItem>
+                </Grid>
+              </Box>
+
+        }
+        <div>
+        <Heading as="h4" size="lg" ml={"2rem"} mb={"-2rem"} align={"left"}>
+                Reviews
+            </Heading>
+        </div>
+
+        {
+          //check of reviewMetadata is empty, if yes then show spinner or else iterate through the array and show the review card
+          reviewMetadata?
+          reviewMetadata.map((review, index) => {
+            return <ReviewCard reviewData={review} key={index} />
+          }
+          )
+          :
+          updatingReview||refresh?
+            <Heading as="h1" size="2xl" m={"2rem"} align={"center"}>
+                <Spinner />
+            </Heading>
+            
+                
             :
             <Heading as="h1" size="2xl" m={"2rem"} align={"center"}>
                 <Spinner />
             </Heading>
-
+          
         }
 
-        {
+        {/* {
             reviewMetadata?
             
             <ReviewCard reviewData={reviewMetadata} />
             :
-            updatingReview?
-            <Heading as="h1" size="2xl" m={"2rem"} align={"right"}>
+            updatingReview||refresh?
+            <Heading as="h1" size="2xl" m={"2rem"} align={"center"}>
                 <Spinner />
             </Heading>
             
@@ -179,7 +252,7 @@ const comData = useGetCompany(router.query.id);
                 <Spinner />
             </Heading>
 
-        }
+        } */}
         
       </div>
 
