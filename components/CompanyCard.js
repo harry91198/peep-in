@@ -52,7 +52,7 @@ import { FileUploader } from 'react-drag-drop-files';
 
 //gasless
 import { ethers, providers } from "ethers";
-import {Biconomy} from "@biconomy/mexa";
+import { Biconomy } from "@biconomy/mexa";
 import { useEthersSigner } from "../lib/hooks/useEthersSigner";
 
 const fileTypes = ["JPG", "JPEG", "PNG"];
@@ -317,7 +317,6 @@ const CompanyCard = ({companyData, userReview, hasReviewed, setRefresh}) => {
 
         useEffect(() => {
           if (signer) {
-            console.log("signer aya", signer);
             const ethersProvider = new ethers.providers.Web3Provider(
               (signer.provider).provider
             );

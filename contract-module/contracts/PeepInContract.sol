@@ -13,6 +13,15 @@ contract PeepInContract is Initializable, UUPSUpgradeable, OwnableUpgradeable, E
     CountersUpgradeable.Counter private _tokenIdCounter;
     event NewEntry(uint256 indexed tokenId, address indexed to, string uri);
     event ReviewSubmitted(uint256 indexed tokenId, address indexed reviewer, uint256 rating, uint256 timestamp, string reviewLink);
+    event StatusSubmitted(uint256 indexed tokenId, address indexed reviewer, address indexed reviewStatuser, ReviewStatus status);
+
+    // enum for storing review status
+    enum ReviewStatus {
+        // NONE,
+        TRUE,
+        LIE,
+        REPORT
+    }
 
     mapping(uint256 => address) public ownerOf; // mapping for storing owner of the company (tokenId => owner)
     mapping(uint256 => string) public companyMetadata; // mapping for storing company metadata (tokenId => metadata)
@@ -36,6 +45,18 @@ contract PeepInContract is Initializable, UUPSUpgradeable, OwnableUpgradeable, E
     mapping(uint256 => RatingData) public ratingsData;
     uint256 constant public RATING_PRECISION = 1000000; // 10^6 decimal places added for precision
     mapping(address => uint256) public ownerIs; // mapping for storing tokenId of the owner (owner => tokenId)
+
+    mapping(uint256=> mapping(address=>mapping(address=>ReviewStatus))) public statusData; // mapping for storing statusData structure for tokenId, reviewerAddress & reviewStatuserAddress
+
+
+    struct ReviewStatusData {
+        uint256 trueCount;
+        uint256 lieCount;
+        uint256 reportCount;
+    }
+
+    mapping(uint256 => mapping(address => ReviewStatusData)) public reviewStatus; // mapping for storing reviewStatus structure for tokenId and reviewStatuserAddress
+
     /// @custom:oz-upgrades-unsafe-allow constructor    
     constructor() {
         _disableInitializers();
@@ -143,6 +164,30 @@ contract PeepInContract is Initializable, UUPSUpgradeable, OwnableUpgradeable, E
         return ratingsData[tokenId].totalRating * RATING_PRECISION / ratingsData[tokenId].totalCount;
     }
 
+    function submitStatus(uint256 tokenId, address reviewer, ReviewStatus status) external {
+        require(status == ReviewStatus.TRUE || status == ReviewStatus.LIE || status == ReviewStatus.REPORT, "Invalid status");
+        require(Review[tokenId][reviewer].rating != 0, "No review submitted by this reviewer");
+ 
+        // if(statusData[tokenId][reviewer][_msgSender()] != ReviewStatus.NONE){
+        //     if(statusData[tokenId][reviewer][_msgSender()] == ReviewStatus.TRUE){
+        //         reviewStatus[tokenId][reviewer].trueCount--;
+        //     }else if(statusData[tokenId][reviewer][_msgSender()] == ReviewStatus.LIE){
+        //         reviewStatus[tokenId][reviewer].lieCount--;
+        //     }else{
+        //         reviewStatus[tokenId][reviewer].reportCount--;
+        //     }
+        // }
+
+        statusData[tokenId][reviewer][_msgSender()] = status;
+        if(status == ReviewStatus.TRUE){
+            reviewStatus[tokenId][reviewer].trueCount++;
+        }else if(status == ReviewStatus.LIE){
+            reviewStatus[tokenId][reviewer].lieCount++;
+        }else{
+            reviewStatus[tokenId][reviewer].reportCount++;
+        }
+        emit StatusSubmitted(tokenId, reviewer, _msgSender(), status);
+    }
 
 
     /**

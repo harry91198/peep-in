@@ -968,6 +968,939 @@
           }
         }
       }
+    },
+    "31cff2bde71362a389c06712c65cd386b353d0b1824faa4fcebefbbeb819e008": {
+      "address": "0xEA1828Aed648E47B165D4c070b3f9d3B23E1fEAE",
+      "txHash": "0x6fe4c35f9c4961e08a689033d7089ed323d4385ddd874a263cee0404945b799f",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ERC1967UpgradeUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol:169"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "UUPSUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol:111"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "151",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "152",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_trustedForwarder",
+            "offset": 0,
+            "slot": "201",
+            "type": "t_address",
+            "contract": "ERC2771Recipient",
+            "src": "@opengsn/contracts/src/ERC2771Recipient.sol:21"
+          },
+          {
+            "label": "_tokenIdCounter",
+            "offset": 0,
+            "slot": "202",
+            "type": "t_struct(Counter)1306_storage",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:13"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "203",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:25"
+          },
+          {
+            "label": "companyMetadata",
+            "offset": 0,
+            "slot": "204",
+            "type": "t_mapping(t_uint256,t_string_storage)",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:26"
+          },
+          {
+            "label": "totalCom",
+            "offset": 0,
+            "slot": "205",
+            "type": "t_uint256",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:27"
+          },
+          {
+            "label": "Review",
+            "offset": 0,
+            "slot": "206",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_struct(ReviewData)1558_storage))",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:42"
+          },
+          {
+            "label": "ratingsData",
+            "offset": 0,
+            "slot": "207",
+            "type": "t_mapping(t_uint256,t_struct(RatingData)1563_storage)",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:44"
+          },
+          {
+            "label": "ownerIs",
+            "offset": 0,
+            "slot": "208",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:46"
+          },
+          {
+            "label": "statusData",
+            "offset": 0,
+            "slot": "209",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_mapping(t_address,t_enum(ReviewStatus)1541)))",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:48"
+          },
+          {
+            "label": "reviewStatus",
+            "offset": 0,
+            "slot": "210",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_struct(ReviewStatusData)1598_storage))",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:57"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(ReviewStatus)1541": {
+            "label": "enum PeepInContract.ReviewStatus",
+            "members": [
+              "TRUE",
+              "LIE",
+              "REPORT"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_enum(ReviewStatus)1541)": {
+            "label": "mapping(address => enum PeepInContract.ReviewStatus)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_enum(ReviewStatus)1541))": {
+            "label": "mapping(address => mapping(address => enum PeepInContract.ReviewStatus))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_struct(ReviewData)1558_storage)": {
+            "label": "mapping(address => struct PeepInContract.ReviewData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_struct(ReviewStatusData)1598_storage)": {
+            "label": "mapping(address => struct PeepInContract.ReviewStatusData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_mapping(t_address,t_enum(ReviewStatus)1541)))": {
+            "label": "mapping(uint256 => mapping(address => mapping(address => enum PeepInContract.ReviewStatus)))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_struct(ReviewData)1558_storage))": {
+            "label": "mapping(uint256 => mapping(address => struct PeepInContract.ReviewData))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_struct(ReviewStatusData)1598_storage))": {
+            "label": "mapping(uint256 => mapping(address => struct PeepInContract.ReviewStatusData))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_string_storage)": {
+            "label": "mapping(uint256 => string)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(RatingData)1563_storage)": {
+            "label": "mapping(uint256 => struct PeepInContract.RatingData)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Counter)1306_storage": {
+            "label": "struct CountersUpgradeable.Counter",
+            "members": [
+              {
+                "label": "_value",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(RatingData)1563_storage": {
+            "label": "struct PeepInContract.RatingData",
+            "members": [
+              {
+                "label": "totalRating",
+                "type": "t_uint128",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "totalCount",
+                "type": "t_uint128",
+                "offset": 16,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(ReviewData)1558_storage": {
+            "label": "struct PeepInContract.ReviewData",
+            "members": [
+              {
+                "label": "rating",
+                "type": "t_uint128",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "timestamp",
+                "type": "t_uint128",
+                "offset": 16,
+                "slot": "0"
+              },
+              {
+                "label": "reviewLink",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(ReviewStatusData)1598_storage": {
+            "label": "struct PeepInContract.ReviewStatusData",
+            "members": [
+              {
+                "label": "trueCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lieCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "reportCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint128": {
+            "label": "uint128",
+            "numberOfBytes": "16"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "32c9b53201b7bd056e70366f61afd2e99a6fc24a49398a50dce89f41901abe37": {
+      "address": "0xb47fa233d5ae328C1385048139d001C8f7926621",
+      "txHash": "0x4ab4f0a3b1937dc9155a6b2eac7d1d9a49e29da9e063441ea00979fda264c708",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ERC1967UpgradeUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol:169"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "UUPSUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol:111"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "151",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "152",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_trustedForwarder",
+            "offset": 0,
+            "slot": "201",
+            "type": "t_address",
+            "contract": "ERC2771Recipient",
+            "src": "@opengsn/contracts/src/ERC2771Recipient.sol:21"
+          },
+          {
+            "label": "_tokenIdCounter",
+            "offset": 0,
+            "slot": "202",
+            "type": "t_struct(Counter)1306_storage",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:13"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "203",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:25"
+          },
+          {
+            "label": "companyMetadata",
+            "offset": 0,
+            "slot": "204",
+            "type": "t_mapping(t_uint256,t_string_storage)",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:26"
+          },
+          {
+            "label": "totalCom",
+            "offset": 0,
+            "slot": "205",
+            "type": "t_uint256",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:27"
+          },
+          {
+            "label": "Review",
+            "offset": 0,
+            "slot": "206",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_struct(ReviewData)1558_storage))",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:42"
+          },
+          {
+            "label": "ratingsData",
+            "offset": 0,
+            "slot": "207",
+            "type": "t_mapping(t_uint256,t_struct(RatingData)1563_storage)",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:44"
+          },
+          {
+            "label": "ownerIs",
+            "offset": 0,
+            "slot": "208",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:46"
+          },
+          {
+            "label": "statusData",
+            "offset": 0,
+            "slot": "209",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_mapping(t_address,t_enum(ReviewStatus)1541)))",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:48"
+          },
+          {
+            "label": "reviewStatus",
+            "offset": 0,
+            "slot": "210",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_struct(ReviewStatusData)1598_storage))",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:57"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(ReviewStatus)1541": {
+            "label": "enum PeepInContract.ReviewStatus",
+            "members": [
+              "TRUE",
+              "LIE",
+              "REPORT"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_enum(ReviewStatus)1541)": {
+            "label": "mapping(address => enum PeepInContract.ReviewStatus)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_enum(ReviewStatus)1541))": {
+            "label": "mapping(address => mapping(address => enum PeepInContract.ReviewStatus))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_struct(ReviewData)1558_storage)": {
+            "label": "mapping(address => struct PeepInContract.ReviewData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_struct(ReviewStatusData)1598_storage)": {
+            "label": "mapping(address => struct PeepInContract.ReviewStatusData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_mapping(t_address,t_enum(ReviewStatus)1541)))": {
+            "label": "mapping(uint256 => mapping(address => mapping(address => enum PeepInContract.ReviewStatus)))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_struct(ReviewData)1558_storage))": {
+            "label": "mapping(uint256 => mapping(address => struct PeepInContract.ReviewData))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_struct(ReviewStatusData)1598_storage))": {
+            "label": "mapping(uint256 => mapping(address => struct PeepInContract.ReviewStatusData))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_string_storage)": {
+            "label": "mapping(uint256 => string)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(RatingData)1563_storage)": {
+            "label": "mapping(uint256 => struct PeepInContract.RatingData)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Counter)1306_storage": {
+            "label": "struct CountersUpgradeable.Counter",
+            "members": [
+              {
+                "label": "_value",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(RatingData)1563_storage": {
+            "label": "struct PeepInContract.RatingData",
+            "members": [
+              {
+                "label": "totalRating",
+                "type": "t_uint128",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "totalCount",
+                "type": "t_uint128",
+                "offset": 16,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(ReviewData)1558_storage": {
+            "label": "struct PeepInContract.ReviewData",
+            "members": [
+              {
+                "label": "rating",
+                "type": "t_uint128",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "timestamp",
+                "type": "t_uint128",
+                "offset": 16,
+                "slot": "0"
+              },
+              {
+                "label": "reviewLink",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(ReviewStatusData)1598_storage": {
+            "label": "struct PeepInContract.ReviewStatusData",
+            "members": [
+              {
+                "label": "trueCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lieCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "reportCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint128": {
+            "label": "uint128",
+            "numberOfBytes": "16"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "491ecfd0e68e2202206aedccb1eeb06fc9e932439a94d3cf8cf3f1076dfa362d": {
+      "address": "0x52b7dDF720F5f958CE962b0cAa9791cf7D217498",
+      "txHash": "0xca67cf140886460d86d7e8949bee933b5f7e90b6efd125b32a79e8934a086476",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ERC1967UpgradeUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol:169"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "UUPSUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol:111"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "151",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "152",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_trustedForwarder",
+            "offset": 0,
+            "slot": "201",
+            "type": "t_address",
+            "contract": "ERC2771Recipient",
+            "src": "@opengsn/contracts/src/ERC2771Recipient.sol:21"
+          },
+          {
+            "label": "_tokenIdCounter",
+            "offset": 0,
+            "slot": "202",
+            "type": "t_struct(Counter)1306_storage",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:13"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "203",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:26"
+          },
+          {
+            "label": "companyMetadata",
+            "offset": 0,
+            "slot": "204",
+            "type": "t_mapping(t_uint256,t_string_storage)",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:27"
+          },
+          {
+            "label": "totalCom",
+            "offset": 0,
+            "slot": "205",
+            "type": "t_uint256",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:28"
+          },
+          {
+            "label": "Review",
+            "offset": 0,
+            "slot": "206",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_struct(ReviewData)1558_storage))",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:43"
+          },
+          {
+            "label": "ratingsData",
+            "offset": 0,
+            "slot": "207",
+            "type": "t_mapping(t_uint256,t_struct(RatingData)1563_storage)",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:45"
+          },
+          {
+            "label": "ownerIs",
+            "offset": 0,
+            "slot": "208",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:47"
+          },
+          {
+            "label": "statusData",
+            "offset": 0,
+            "slot": "209",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_mapping(t_address,t_enum(ReviewStatus)1541)))",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:49"
+          },
+          {
+            "label": "reviewStatus",
+            "offset": 0,
+            "slot": "210",
+            "type": "t_mapping(t_uint256,t_mapping(t_address,t_struct(ReviewStatusData)1598_storage))",
+            "contract": "PeepInContract",
+            "src": "contracts/PeepInContract.sol:58"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(ReviewStatus)1541": {
+            "label": "enum PeepInContract.ReviewStatus",
+            "members": [
+              "TRUE",
+              "LIE",
+              "REPORT"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_enum(ReviewStatus)1541)": {
+            "label": "mapping(address => enum PeepInContract.ReviewStatus)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_enum(ReviewStatus)1541))": {
+            "label": "mapping(address => mapping(address => enum PeepInContract.ReviewStatus))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_struct(ReviewData)1558_storage)": {
+            "label": "mapping(address => struct PeepInContract.ReviewData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_struct(ReviewStatusData)1598_storage)": {
+            "label": "mapping(address => struct PeepInContract.ReviewStatusData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_mapping(t_address,t_enum(ReviewStatus)1541)))": {
+            "label": "mapping(uint256 => mapping(address => mapping(address => enum PeepInContract.ReviewStatus)))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_struct(ReviewData)1558_storage))": {
+            "label": "mapping(uint256 => mapping(address => struct PeepInContract.ReviewData))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_struct(ReviewStatusData)1598_storage))": {
+            "label": "mapping(uint256 => mapping(address => struct PeepInContract.ReviewStatusData))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_string_storage)": {
+            "label": "mapping(uint256 => string)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(RatingData)1563_storage)": {
+            "label": "mapping(uint256 => struct PeepInContract.RatingData)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Counter)1306_storage": {
+            "label": "struct CountersUpgradeable.Counter",
+            "members": [
+              {
+                "label": "_value",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(RatingData)1563_storage": {
+            "label": "struct PeepInContract.RatingData",
+            "members": [
+              {
+                "label": "totalRating",
+                "type": "t_uint128",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "totalCount",
+                "type": "t_uint128",
+                "offset": 16,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(ReviewData)1558_storage": {
+            "label": "struct PeepInContract.ReviewData",
+            "members": [
+              {
+                "label": "rating",
+                "type": "t_uint128",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "timestamp",
+                "type": "t_uint128",
+                "offset": 16,
+                "slot": "0"
+              },
+              {
+                "label": "reviewLink",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(ReviewStatusData)1598_storage": {
+            "label": "struct PeepInContract.ReviewStatusData",
+            "members": [
+              {
+                "label": "trueCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lieCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "reportCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint128": {
+            "label": "uint128",
+            "numberOfBytes": "16"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
     }
   }
 }

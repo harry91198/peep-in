@@ -42,8 +42,6 @@ export default function Nav(props) {
   // console.log("colorMode", colorMode);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
-  console.log("router", router.pathname);
-
 
   return (
     <>
