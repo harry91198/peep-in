@@ -265,7 +265,7 @@ return (
         </Flex>
         <Divider />
         <Flex>
-            <Box m={2}>
+            <Box m={2} minW={'45%'}>
                 <Heading fontSize="xl">Pros: </Heading>
                 <Text fontSize="xs">{reviewData.pros}</Text>
 
@@ -273,7 +273,7 @@ return (
                 <Text fontSize="xs">{reviewData.cons}</Text>
             </Box>
             <Spacer />
-            <Box m={2}>
+            <Box m={2} minW={'55%'}>
                 <Heading fontSize="xl">Advices</Heading>
                 <Text fontSize="xs">{reviewData.advices}</Text>
                 <Text fontSize="xs" mt={2}>
